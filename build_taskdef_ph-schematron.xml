@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright 2017 DOCTALES. All rights reserved.
+  See the accompanying LICENSE file for applicable license.
+-->
+<project>
+
+    <path id="ph-schematron.path">
+        <pathelement location="lib/ph-schematron-ant-task-5.0.0.jar"/>
+    </path>
+
+    <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
+
+</project>

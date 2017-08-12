@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright 2017 DOCTALES. All rights reserved.
+  See the accompanying LICENSE file for applicable license.
+-->
+<project basedir="." name="build_dita2schematron">
+
+    <import file="build_taskdef_ph-schematron.xml"/>
+    <import file="build_taskdef_ant-contrib.xml"/>
+  
+    <target name="schematron-validation">
+        <condition property="validate.maps">
+            <available file="${schematron.map.validation.file}"/>
+        </condition>
+        <antcall target="schematron-validate-maps"/>
+        <condition property="validate.topics">
+            <available file="${schematron.topic.validation.file}"/>
+        </condition>
+        <antcall target="schematron-validate-topics"/>
+    </target>
+
+    <target name="schematron-validate-maps" if="validate.maps">
+        <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
+        <echo>validate.maps=${validate.maps}</echo>
+        <echo>fullditamap.list.file=${fullditamap.list.file}</echo>
+        <property name="schematron.processing.engine" value="pure"/>
+        <for list="${fullditamap.list.file}" param="map.file">
+            <sequential>
+                <echo level="verbose">Validate '@{map.file}' with '${schematron.map.validation.file}'</echo>
+                <schematron
+                    schematronFile="${schematron.topics.file}"
+                    expectSuccess="true"
+                    schematronProcessingEngine="${schematron.processing.engine}">
+                    <fileset dir="${dita.temp.dir}">
+                        <include name="@{map.file}"/>
+                    </fileset>
+                    <xmlcatalog refid="dita.catalog"/>
+                </schematron>
+            </sequential>
+        </for>
+    </target>
+
+    <target name="schematron-validate-topics" if="validate.topics">
+        <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
+        <echo>validate.topics=${validate.topics}</echo>
+        <echo>fullditatopic.list.file=${fullditatopic.list.file}</echo>
+        <property name="schematron.processing.engine" value="pure"/>
+        <for list="${fullditatopic.list.file}" param="topic.file">
+            <sequential>
+                <echo level="verbose">Validate '@{topic.file}' with '${schematron.topic.validation.file}'</echo>
+                <schematron
+                    schematronFile="${schematron.topic.validation.file}"
+                    expectSuccess="true"
+                    schematronProcessingEngine="${schematron.processing.engine}">
+                    <fileset dir="${dita.temp.dir}">
+                        <include name="@{topic.file}"/>
+                    </fileset>
+                    <xmlcatalog refid="dita.catalog"/>
+                </schematron>
+            </sequential>
+        </for>
+    </target>
+
+</project>

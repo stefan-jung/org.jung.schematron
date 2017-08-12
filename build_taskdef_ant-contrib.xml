@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  Copyright 2017 DOCTALES. All rights reserved.
+  See the accompanying LICENSE file for applicable license.
+-->
+<project>
+
+    <taskdef
+        resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="lib/ant-contrib-1.0b3.jar"/>
+        </classpath>
+    </taskdef>
+
+</project>

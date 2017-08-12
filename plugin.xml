@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="dita-ot/plugin.rnc" type="application/relax-ng-compact-syntax"?>
+<!-- 
+  Copyright 2017 DOCTALES. All rights reserved.
+  See the accompanying LICENSE file for applicable license.
+-->
+<plugin id="org.doctales.schematron">
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.0.0.jar"/>
+  <feature extension="dita.conductor.target.relative" file="build.xml"/>
+  <feature extension="depend.preprocess.post" value="schematron-validation"/>
+</plugin>
