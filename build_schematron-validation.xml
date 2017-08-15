@@ -28,7 +28,7 @@
             <sequential>
                 <echo level="verbose">Validate '@{map.file}' with '${schematron.map.validation.file}'</echo>
                 <schematron
-                    schematronFile="${schematron.topics.file}"
+                    schematronFile="${schematron.map.validation.file}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}">
                     <fileset dir="${dita.temp.dir}">
