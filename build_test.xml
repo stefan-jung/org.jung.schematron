@@ -8,10 +8,15 @@
     <import file="build_taskdef_ph-schematron.xml"/>
     <import file="build_taskdef_ant-contrib.xml"/>
     
-    <property name="dita.dir" location="${user.dir}/dita-ot"/>
-
+    <property name="dita.dir" location="dita-ot"/>
+    
     <xmlcatalog id="dita.catalog">
-        <catalogpath path="${dita.dir}/plugins/org.dita.base/catalog-dita.xml"/>
+        <catalogpath>
+            <fileset 
+                dir="${dita.dir}"
+                includes="**/catalog*.xml"
+            />
+        </catalogpath>
     </xmlcatalog>
 
     <target name="test">
@@ -23,7 +28,9 @@
             <fileset dir="${basedir}">
                 <include name="samples/*.dita"/>
             </fileset>
-            <xmlcatalog refid="dita.catalog"/>
+            <xmlcatalog>
+                <catalogpath path="${dita.dir}/catalog-dita.xml"/>
+            </xmlcatalog>
         </schematron>
     </target>
 </project>
