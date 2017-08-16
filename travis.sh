@@ -14,4 +14,4 @@ echo "Start Ant test"
 dita-ot/bin/ant -f build_test.xml -Ddita.dir=dita-ot
 
 echo "Start DITA-OT test"
-dita-ot/bin/dita --input samples/sample.ditamap --format pdf2 -Dschematron.topic.validation.file=rules/topic-validation.sch,rules/topic-terminology.sch --verbose
+dita-ot/bin/dita --input samples/sample.ditamap --format pdf2 -Dschematron.topic.validation.files=rules/topic-validation.sch,rules/topic-terminology.sch --verbose
