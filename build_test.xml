@@ -8,13 +8,14 @@
     <import file="build_taskdef_ph-schematron.xml"/>
     <import file="build_taskdef_ant-contrib.xml"/>
     
-    <property name="dita.dir" value="dita-ot"/>
+    <property name="dita.dir" location="${user.dir}/dita-ot"/>
 
     <xmlcatalog id="dita.catalog">
         <catalogpath path="${dita.dir}/plugins/org.dita.base/catalog-dita.xml"/>
     </xmlcatalog>
 
     <target name="test">
+        <echo>dita.dir=${dita.dir}
         <schematron
             schematronFile="${basedir}/rules/topic-validation.sch"
             expectSuccess="true"

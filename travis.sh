@@ -9,5 +9,9 @@ mv dita-ot*/ dita-ot/
 chmod +x dita-ot/bin/dita
 dita-ot/bin/dita --install org.doctales.schematron.zip
 ls -la
+
+echo "Start Ant test"
 dita-ot/bin/ant -f build_test.xml -Ddita.dir=dita-ot
+
+echo "Start DITA-OT test"
 dita-ot/bin/dita --input samples/sample.ditamap --format pdf2 -Dschematron.topic.validation.file=rules/topic-validation.sch,rules/topic-terminology.sch --verbose
