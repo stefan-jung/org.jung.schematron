@@ -16,12 +16,16 @@ org.doctales.schematron
 
 | Parameter | Description |
 |:----------|:------------|
-| **schematron.processing.engine** | Sets the Schematron processing engine (`pure` (default), `schematron`, `xslt`) |
+| **schematron.processing.engine** | Schematron processing engine: `pure` (default), `schematron` or `xslt` |
 | **schematron.map.validation.files** | Comma separated list of Schematron files for map validation |
 | **schematron.topic.validation.files** | Comma separated list of Schematron files for topic validation |
 
 ## Usage
 
 ```
-dita --input my.ditamap --format pdf2 -Dschematron.topic.validation.files=topic-validation-1.sch,topic-validation-2.sch -Dschematron.map.validation.files=map-validation.sch --verbose
+dita --input my.ditamap \
+     --format pdf2 \
+     --verbose
+     -Dschematron.topic.validation.files=topic-validation-1.sch,topic-validation-2.sch \
+     -Dschematron.map.validation.files=map-validation.sch \
 ```
