@@ -4,84 +4,65 @@
   See the accompanying LICENSE file for applicable license.
 -->
 <project basedir="." name="build_dita2schematron">
-
+    
     <import file="build_taskdef_ph-schematron.xml"/>
     <import file="build_taskdef_ant-contrib.xml"/>
-  
+    
     <target name="schematron-validation">
         <property name="schematron.processing.engine" value="pure"/>
         
         <!-- Schematron DITA-Map validation -->
-        <property name="schematron.map.validation.file.absolute" location="${user.dir}/${schematron.map.validation.file}"/>
         <if>
-            <and>
-                <isset property="schematron.map.validation.file"/>
-                <available file="${schematron.map.validation.file.absolute}"/>
-            </and>
+            <isset property="schematron.map.validation.files"/>
             <then>
-                <antcall target="schematron-validate-maps"/>
+                <for list="${schematron.map.validation.files}" param="schematron.files" delimiter=",">
+                    <sequential>
+                        <antcall target="schematron-validate-maps">
+                            <param name="schematron.files" value="@{schematron.files}"/>
+                        </antcall>
+                    </sequential>
+                </for>
             </then>
             <elseif>
                 <not>
-                    <isset property="schematron.map.validation.file"/>
+                    <isset property="schematron.map.validation.files"/>
                 </not>
                 <then>
-                    <echo>'schematron.map.validation.file' is not set, skip Schematron DITA-Map validation</echo>
-                </then>
-            </elseif>
-            <elseif>
-                <and>
-                    <isset property="schematron.map.validation.file"/>
-                    <not>
-                        <available file="${schematron.map.validation.file.absolute}"/>
-                    </not>
-                </and>
-                <then>
-                    <echo>Schematron map validation file '${schematron.map.validation.file.absolute}' is not found, skip DITA-Map validation</echo>
+                    <echo>'schematron.map.validation.files' is not set, skip Schematron DITA-Map validation</echo>
                 </then>
             </elseif>
         </if>
         
         <!-- Schematron DITA-Topic validation -->
-        <property name="schematron.topic.validation.file.absolute" location="${user.dir}/${schematron.topic.validation.file}"/>
         <if>
-            <and>
-                <isset property="schematron.topic.validation.file"/>
-                <available file="${schematron.topic.validation.file.absolute}"/>
-            </and>
+            <isset property="schematron.topic.validation.files"/>
             <then>
-                <antcall target="schematron-validate-topics"/>
+                <for list="${schematron.topic.validation.files}" param="schematron.files" delimiter=",">
+                    <sequential>
+                        <antcall target="schematron-validate-topics">
+                            <param name="schematron.files" value="@{schematron.files}"/>
+                        </antcall>
+                    </sequential>
+                </for>
             </then>
             <elseif>
                 <not>
-                    <isset property="schematron.topic.validation.file"/>
+                    <isset property="schematron.topic.validation.files"/>
                 </not>
                 <then>
-                    <echo>'schematron.topic.validation.file' is not set, skip Schematron DITA-Topic validation</echo>
-                </then>
-            </elseif>
-            <elseif>
-                <and>
-                    <isset property="schematron.topic.validation.file"/>
-                    <not>
-                        <available file="${schematron.topic.validation.file.absolute}"/>
-                    </not>
-                </and>
-                <then>
-                    <echo>Schematron topic validation file '${schematron.topic.validation.file.absolute}' is not found, skip DITA-Topic validation</echo>
+                    <echo>'schematron.topic.validation.files' is not set, skip Schematron DITA-Topic validation</echo>
                 </then>
             </elseif>
         </if>
     </target>
-
+    
     <target name="schematron-validate-maps">
         <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
-        <echo>fullditamap.list.file=${fullditamap.list.file}</echo>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
             <sequential>
-                <echo level="verbose">Validate '@{map.file}' with '${schematron.map.validation.file.absolute}'</echo>
+                <echo>Validate '@{map.file}' with '${user.dir}/${schematron.files}'</echo>
                 <schematron
-                    schematronFile="${schematron.map.validation.file.absolute}"
+                    schematronFile="${user.dir}/${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}">
                     <fileset dir="${dita.temp.dir}">
@@ -92,15 +73,14 @@
             </sequential>
         </for>
     </target>
-
+    
     <target name="schematron-validate-topics">
         <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
-        <echo>fullditatopic.list.file=${fullditatopic.list.file}</echo>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
             <sequential>
-                <echo level="verbose">Validate '@{topic.file}' with '${schematron.topic.validation.file.absolute}'</echo>
+                <echo>Validate '@{topic.file}' with '${user.dir}/${schematron.files}'</echo>
                 <schematron
-                    schematronFile="${schematron.topic.validation.file.absolute}"
+                    schematronFile="${user.dir}/${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}">
                     <fileset dir="${dita.temp.dir}">
