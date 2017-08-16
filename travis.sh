@@ -3,8 +3,8 @@
 # See the accompanying LICENSE file for applicable license.
 
 zip -r org.doctales.schematron.zip . -x *.zip* *.git/* *temp/* *out/*
-curl -LO https://s3-eu-west-1.amazonaws.com/dita-ot/dita-ot-develop.zip
-unzip -q dita-ot-develop.zip
+curl -LO https://github.com/dita-ot/dita-ot/releases/download/2.5.2/dita-ot-2.5.2.zip
+unzip -q dita-ot-2.5.2.zip
 mv dita-ot*/ dita-ot/
 chmod +x dita-ot/bin/dita
 dita-ot/bin/dita --install org.doctales.schematron.zip
