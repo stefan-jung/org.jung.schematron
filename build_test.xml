@@ -7,18 +7,20 @@
 
     <import file="build_taskdef_ph-schematron.xml"/>
     <import file="build_taskdef_ant-contrib.xml"/>
+    
+    <property name="dita.dir" value="dita-ot"/>
 
     <xmlcatalog id="dita.catalog">
-        <catalogpath path="${user.home}/workspace/DITA/dita-ot/plugins/org.dita.base/catalog-dita.xml"/>
+        <catalogpath path="${dita.dir}/plugins/org.dita.base/catalog-dita.xml"/>
     </xmlcatalog>
 
     <target name="test">
         <schematron
             schematronFile="${basedir}/rules/topic-validation.sch"
             expectSuccess="true"
-            schematronProcessingEngine="xslt">
+            schematronProcessingEngine="pure">
             <fileset dir="${basedir}">
-                <include name="samples/topic.dita"/>
+                <include name="samples/*.dita"/>
             </fileset>
             <xmlcatalog refid="dita.catalog"/>
         </schematron>
