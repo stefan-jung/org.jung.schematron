@@ -1,6 +1,4 @@
 out/
 temp/
-rules/
-samples/
 *.xpr
 build_install.xml
