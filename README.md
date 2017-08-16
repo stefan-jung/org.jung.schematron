@@ -25,7 +25,7 @@ org.doctales.schematron
 ```
 dita --input my.ditamap \
      --format pdf2 \
-     --verbose
+     --verbose \
      -Dschematron.topic.validation.files=topic-validation-1.sch,topic-validation-2.sch \
-     -Dschematron.map.validation.files=map-validation.sch \
+     -Dschematron.map.validation.files=map-validation.sch
 ```
