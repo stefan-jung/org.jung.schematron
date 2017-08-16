@@ -9,7 +9,7 @@
     <import file="build_taskdef_ant-contrib.xml"/>
     
     <target name="schematron-validation">
-        <property name="schematron.processing.engine" value="xslt"/>
+        <property name="schematron.processing.engine" value="pure"/>
         
         <!-- Schematron DITA-Map validation -->
         <if>
