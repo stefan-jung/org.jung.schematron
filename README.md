@@ -1,5 +1,12 @@
+![DOCTALES Logo](https://doctales.github.io/images/doctales-logo-without-subtitle.svg)
+
+- - - -
+
 org.doctales.schematron
-=======================
+===========================
+
+[![Build Status](https://travis-ci.org/doctales/org.doctales.schematron.svg?branch=master)](https://travis-ci.org/doctales/org.doctales.schematron)
+[![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 **org.doctales.schematron** is a plugin for the [DITA Open Toolkit (DITA-OT)](http://www.dita-ot.org). It uses the `depend.preprocess.post` extension point to validate DITA maps and topics after the preprocessing phase. The plugin uses [ph-schematron](https://github.com/phax/ph-schematron) for validation.
 
