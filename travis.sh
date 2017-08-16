@@ -7,5 +7,6 @@ curl -LO https://s3-eu-west-1.amazonaws.com/dita-ot/dita-ot-develop.zip
 unzip -q dita-ot-develop.zip
 mv dita-ot*/ dita-ot/
 chmod +x dita-ot/bin/dita
-dita-ot/bin/dita -install org.doctales.schematron.zip
+dita-ot/bin/dita --install org.doctales.schematron.zip
+ls -la
 dita-ot/bin/dita --input samples/sample.ditamap --format pdf2 -Dschematron.topic.validation.file=rules/topic-validation.sch --verbose
