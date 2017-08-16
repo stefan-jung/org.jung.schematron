@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk8
+script: bash travis.sh
+notifications:
+  slack:
+    rooms:
+      - doctales:BkI4k7awSFS5X5aT04Y3vHQ9#schematron

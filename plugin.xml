@@ -5,6 +5,7 @@
   See the accompanying LICENSE file for applicable license.
 -->
 <plugin id="org.doctales.schematron">
+  <feature extension="dita.conductor.lib.import" file="lib/ant-contrib-1.0b3.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.0.0.jar"/>
   <feature extension="dita.conductor.target.relative" file="build.xml"/>
   <feature extension="depend.preprocess.post" value="schematron-validation"/>

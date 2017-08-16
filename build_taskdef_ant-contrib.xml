@@ -4,12 +4,9 @@
   See the accompanying LICENSE file for applicable license.
 -->
 <project>
-
-    <taskdef
-        resource="net/sf/antcontrib/antcontrib.properties">
+    <taskdef resource="net/sf/antcontrib/antlib.xml">
         <classpath>
             <pathelement location="lib/ant-contrib-1.0b3.jar"/>
         </classpath>
     </taskdef>
-
 </project>
