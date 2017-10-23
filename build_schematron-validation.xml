@@ -60,9 +60,9 @@
         <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
             <sequential>
-                <echo>Validate '@{map.file}' with '${user.dir}/${schematron.files}'</echo>
+                <echo>Validate '@{map.file}' with '${schematron.files}'</echo>
                 <schematron
-                    schematronFile="${user.dir}/${schematron.files}"
+                    schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}">
                     <fileset dir="${dita.temp.dir}">
@@ -78,9 +78,9 @@
         <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
             <sequential>
-                <echo>Validate '@{topic.file}' with '${user.dir}/${schematron.files}'</echo>
+                <echo>Validate '@{topic.file}' with '${schematron.files}'</echo>
                 <schematron
-                    schematronFile="${user.dir}/${schematron.files}"
+                    schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}">
                     <fileset dir="${dita.temp.dir}">
