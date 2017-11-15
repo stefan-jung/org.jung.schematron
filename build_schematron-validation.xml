@@ -6,9 +6,17 @@
 <project basedir="." name="build_dita2schematron">
     
     <import file="build_taskdef_ph-schematron.xml"/>
-    <import file="build_taskdef_ant-contrib.xml"/>
     
-    <target name="schematron-validation">
+    <target name="-is-ant-contrib-available">
+        <pathconvert refid="dost.class.path" property="dost.class.path.property"/>
+        <condition property="ant-contrib-available" value="true">
+            <contains string="${dost.class.path.property}" substring="ant-contrib"/>
+        </condition>
+        <fail unless="ant-contrib-available">ant-contrib is not found on classpath</fail>
+    </target>
+    
+    <target name="schematron-validation"
+        depends="-is-ant-contrib-available">
         <property name="schematron.processing.engine" value="pure"/>
         
         <!-- Schematron DITA-Map validation -->
@@ -56,7 +64,7 @@
         </if>
     </target>
     
-    <target name="schematron-validate-maps">
+    <target name="schematron-validate-maps" depends="-is-ant-contrib-available">
         <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
             <sequential>
@@ -74,7 +82,7 @@
         </for>
     </target>
     
-    <target name="schematron-validate-topics">
+    <target name="schematron-validate-topics" depends="-is-ant-contrib-available">
         <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
             <sequential>

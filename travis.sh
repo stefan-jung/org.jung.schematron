@@ -3,12 +3,14 @@
 # See the accompanying LICENSE file for applicable license.
 
 zip -r org.doctales.schematron.zip . -x *.zip* *.git/* *temp/* *out/*
-curl -LO https://github.com/dita-ot/dita-ot/releases/download/2.5.2/dita-ot-2.5.2.zip
-unzip -q dita-ot-2.5.2.zip
+curl -LO https://github.com/dita-ot/dita-ot/releases/download/2.5.4/dita-ot-2.5.4.zip
+unzip -q dita-ot-2.5.4.zip
 mv dita-ot*/ dita-ot/
 chmod +x dita-ot/bin/dita
 dita-ot/bin/dita --install org.doctales.schematron.zip
-ls -la
+dita-ot/bin/dita --install https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
+
+BASEDIR=$(dirname "$0")
 
 echo "Start Ant test"
 dita-ot/bin/ant -f build_test.xml -Ddita.dir=dita-ot
