@@ -17,7 +17,7 @@
     
     <target name="schematron-validation"
         depends="-is-ant-contrib-available">
-        <property name="schematron.processing.engine" value="pure"/>
+        <property name="schematron.processing.engine" value="xslt"/>
         
         <!-- Schematron DITA-Map validation -->
         <if>
