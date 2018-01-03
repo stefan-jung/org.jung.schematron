@@ -7,18 +7,16 @@
     
     <import file="build_taskdef_ph-schematron.xml"/>
     
-    <!--<target name="-is-ant-contrib-available">
+    <target name="-is-ant-contrib-available">
         <pathconvert refid="dost.class.path" property="dost.class.path.property"/>
         <condition property="ant-contrib-available" value="true">
             <contains string="${dost.class.path.property}" substring="ant-contrib"/>
         </condition>
         <fail unless="ant-contrib-available">ant-contrib is not found on classpath</fail>
-    </target>-->
+    </target>
     
-    <!--<target name="schematron-validation"
-        depends="-is-ant-contrib-available">-->
-    <target name="schematron-validation">
-        <property name="schematron.processing.engine" value="xslt"/>
+    <target name="schematron-validation" depends="-is-ant-contrib-available">
+        <property name="schematron.processing.engine" value="schematron"/>
         
         <!-- Schematron DITA-Map validation -->
         <if>
