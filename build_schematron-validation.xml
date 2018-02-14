@@ -72,7 +72,8 @@
                 <schematron
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
-                    schematronProcessingEngine="${schematron.processing.engine}">
+                    schematronProcessingEngine="${schematron.processing.engine}"
+                    failOnError="false">
                     <fileset dir="${dita.temp.dir}">
                         <include name="@{map.file}"/>
                     </fileset>
@@ -91,7 +92,8 @@
                 <schematron
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
-                    schematronProcessingEngine="${schematron.processing.engine}">
+                    schematronProcessingEngine="${schematron.processing.engine}"
+                    failOnError="false">
                     <fileset dir="${dita.temp.dir}">
                         <include name="@{topic.file}"/>
                     </fileset>
