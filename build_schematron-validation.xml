@@ -74,10 +74,11 @@
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
                     failOnError="false">
-                    <fileset dir="${dita.temp.dir}">
-                        <include name="@{map.file}"/>
-                    </fileset>
                     <xmlcatalog refid="dita.catalog"/>
+                    <ditafileset format="ditamap"/>
+                    <!--<fileset dir="${dita.temp.dir}">
+                        <include name="@{map.file}"/>
+                    </fileset>-->
                 </schematron>
             </sequential>
         </for>
@@ -94,10 +95,11 @@
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
                     failOnError="false">
-                    <fileset dir="${dita.temp.dir}">
+                    <!--<fileset dir="${dita.temp.dir}">
                         <include name="@{topic.file}"/>
-                    </fileset>
+                    </fileset>-->
                     <xmlcatalog refid="dita.catalog"/>
+                    <ditafileset format="dita"/>
                 </schematron>
             </sequential>
         </for>
