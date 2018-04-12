@@ -1,9 +1,8 @@
 #!/bin/sh
-# Copyright 2017 DOCTALES. All rights reserved.
+# Copyright 2017, 2018. DOCTALES. All rights reserved.
 # See the accompanying LICENSE file for applicable license.
-
 zip -r org.doctales.schematron.zip . -x *.zip* *.git/* *temp/* *out/*
-curl -LO https://github.com/dita-ot/dita-ot/releases/download/3.0/dita-ot-3.0.zip
+curl -LO 'https://github.com/dita-ot/dita-ot/releases/download/3.0/dita-ot-3.0.zip'
 unzip -q dita-ot-3.0.zip
 mv dita-ot*/ dita-ot/
 chmod +x dita-ot/bin/dita
