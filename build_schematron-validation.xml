@@ -76,6 +76,10 @@
                     failOnError="false">
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="ditamap"/>
+                    <errorRole if:set="failOnError.fatal"   role="fatal"/>
+                    <errorRole if:set="failOnError.error"   role="error"/>
+                    <errorRole if:set="failOnError.warning" role="warning"/>
+                    <errorRole if:set="failOnError.info"    role="info"/>
                     <!--<fileset dir="${dita.temp.dir}">
                         <include name="@{map.file}"/>
                     </fileset>-->
@@ -100,6 +104,10 @@
                     </fileset>-->
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="dita"/>
+                    <errorRole if:set="failOnError.fatal"   role="fatal"/>
+                    <errorRole if:set="failOnError.error"   role="error"/>
+                    <errorRole if:set="failOnError.warning" role="warning"/>
+                    <errorRole if:set="failOnError.info"    role="info"/>
                 </schematron>
             </sequential>
         </for>
