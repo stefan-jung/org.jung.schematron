@@ -3,7 +3,7 @@
   Copyright 2017 DOCTALES. All rights reserved.
   See the accompanying LICENSE file for applicable license.
 -->
-<project basedir="." name="build_dita2schematron">
+<project basedir="." name="build_dita2schematron" xmlns:if="ant:if" xmlns:unless="ant:unless">
     
     <import file="build_taskdef_ph-schematron.xml"/>
     
