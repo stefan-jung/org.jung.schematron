@@ -3,7 +3,7 @@
 # See the accompanying LICENSE file for applicable license.
 
 # DITA-OT Version
-VERSION="3.0.4"
+VERSION="3.1.2"
 
 # DITA-OT URL
 URL="https://github.com/dita-ot/dita-ot/releases/download/$VERSION/dita-ot-$VERSION.zip"
