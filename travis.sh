@@ -10,7 +10,10 @@ URL="https://github.com/dita-ot/dita-ot/releases/download/$VERSION/dita-ot-$VERS
 URL=${URL%$'\r'}
 
 zip -r org.doctales.schematron.zip . -x *.zip* *.git/* *temp/* *out/*
+
+# Download DITA-OT
 curl -LO '$URL'
+
 unzip -q dita-ot-$VERSION.zip
 chmod +x dita-ot-$VERSION/bin/dita
 chmod +x dita-ot-$VERSION/bin/ant
