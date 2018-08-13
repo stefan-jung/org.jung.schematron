@@ -16,8 +16,7 @@ curl -LO $URL
 unzip -q dita-ot-$VERSION.zip
 chmod +x dita-ot-$VERSION/bin/dita
 chmod +x dita-ot-$VERSION/bin/ant
-dita-ot-$VERSION/bin/dita --install 
-https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
+dita-ot-$VERSION/bin/dita --install https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
 dita-ot-$VERSION/bin/dita --install org.doctales.schematron.zip
 BASEDIR=$(dirname "$0")
 echo "Start Ant test"
