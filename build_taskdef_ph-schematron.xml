@@ -5,7 +5,7 @@
 -->
 <project>
     <path id="ph-schematron.path">
-        <pathelement location="lib/ph-schematron-ant-task-5.0.1.jar"/>
+        <pathelement location="lib/ph-schematron-ant-task-5.0.6.jar"/>
     </path>
     <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
 </project>
