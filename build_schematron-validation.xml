@@ -73,16 +73,13 @@
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="false">
+                    failOnError="true">
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="ditamap"/>
-                    <errorRole if:set="failOnError.fatal"   role="fatal"/>
-                    <errorRole if:set="failOnError.error"   role="error"/>
+                    <errorRole if:set="failOnError.fatal" role="fatal"/>
+                    <errorRole if:set="failOnError.error" role="error"/>
                     <errorRole if:set="failOnError.warning" role="warning"/>
-                    <errorRole if:set="failOnError.info"    role="info"/>
-                    <!--<fileset dir="${dita.temp.dir}">
-                        <include name="@{map.file}"/>
-                    </fileset>-->
+                    <errorRole if:set="failOnError.info" role="info"/>
                 </schematron>
             </sequential>
         </for>
@@ -98,16 +95,13 @@
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="false">
-                    <!--<fileset dir="${dita.temp.dir}">
-                        <include name="@{topic.file}"/>
-                    </fileset>-->
+                    failOnError="true">
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="dita"/>
-                    <errorRole if:set="failOnError.fatal"   role="fatal"/>
-                    <errorRole if:set="failOnError.error"   role="error"/>
+                    <errorRole if:set="failOnError.fatal" role="fatal"/>
+                    <errorRole if:set="failOnError.error" role="error"/>
                     <errorRole if:set="failOnError.warning" role="warning"/>
-                    <errorRole if:set="failOnError.info"    role="info"/>
+                    <errorRole if:set="failOnError.info" role="info"/>
                 </schematron>
             </sequential>
         </for>
