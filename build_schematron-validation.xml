@@ -35,7 +35,7 @@
                     <isset property="schematron.map.validation.files"/>
                 </not>
                 <then>
-                    <echo>'schematron.map.validation.files' is not set, skip Schematron DITA-Map validation</echo>
+                    <echo level="info">'schematron.map.validation.files' is not set, skip Schematron DITA-Map validation</echo>
                 </then>
             </elseif>
         </if>
@@ -57,7 +57,7 @@
                     <isset property="schematron.topic.validation.files"/>
                 </not>
                 <then>
-                    <echo>'schematron.topic.validation.files' is not set, skip Schematron DITA-Topic validation</echo>
+                    <echo level="info">'schematron.topic.validation.files' is not set, skip Schematron DITA-Topic validation</echo>
                 </then>
             </elseif>
         </if>
@@ -67,12 +67,12 @@
         <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
             <sequential>
-                <echo>Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
+                <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
                 <schematron
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="true">
+                    failOnError="false">
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="ditamap"/>
                     <errorRole if:set="failOnError.fatal" role="fatal"/>
@@ -88,12 +88,12 @@
         <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
             <sequential>
-                <echo>Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
+                <echo level="info">Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
                 <schematron
                     schematronFile="${schematron.files}"
                     expectSuccess="true"
                     schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="true">
+                    failOnError="false">
                     <xmlcatalog refid="dita.catalog"/>
                     <ditafileset format="dita"/>
                     <errorRole if:set="failOnError.fatal" role="fatal"/>
