@@ -5,6 +5,13 @@
 -->
 <project>
     <path id="ph-schematron.path">
+        <pathelement location="lib/istack-commons-runtime-2.21.jar"/>
+        <pathelement location="lib/jaxb-core-2.2.11.jar"/>
+        <pathelement location="lib/jaxb-runtime-2.2.11.jar"/>
+        <pathelement location="lib/ph-collection-9.1.4.jar"/>
+        <pathelement location="lib/ph-commons-9.1.4.jar"/>
+        <pathelement location="lib/ph-jaxb-9.1.4.jar"/>
+        <pathelement location="lib/ph-xml-9.1.4.jar"/>
         <pathelement location="lib/ph-schematron-ant-task-5.0.6.jar"/>
     </path>
     <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
