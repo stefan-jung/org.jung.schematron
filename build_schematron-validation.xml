@@ -24,7 +24,7 @@
             <then>
                 <for list="${schematron.map.validation.files}" param="schematron.files" delimiter=",">
                     <sequential>
-                        <antcall target="schematron-validate-maps">
+                        <antcall target="-schematron-validate-maps">
                             <param name="schematron.files" value="@{schematron.files}"/>
                         </antcall>
                     </sequential>
@@ -46,7 +46,7 @@
             <then>
                 <for list="${schematron.topic.validation.files}" param="schematron.files" delimiter=",">
                     <sequential>
-                        <antcall target="schematron-validate-topics">
+                        <antcall target="-schematron-validate-topics">
                             <param name="schematron.files" value="@{schematron.files}"/>
                         </antcall>
                     </sequential>
@@ -63,8 +63,8 @@
         </if>
     </target>
     
-    <target name="schematron-validate-maps">
-        <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
+    <target name="-schematron-validate-maps">
+        <!--<loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
             <sequential>
                 <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
@@ -81,11 +81,24 @@
                     <errorRole if:set="failOnError.info" role="info"/>
                 </schematron>
             </sequential>
-        </for>
+        </for>-->
+        <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
+        <schematron
+            schematronFile="${schematron.files}"
+            expectSuccess="true"
+            schematronProcessingEngine="${schematron.processing.engine}"
+            failOnError="false">
+            <xmlcatalog refid="dita.catalog"/>
+            <ditafileset format="ditamap"/>
+            <errorRole if:set="failOnError.fatal" role="fatal"/>
+            <errorRole if:set="failOnError.error" role="error"/>
+            <errorRole if:set="failOnError.warning" role="warning"/>
+            <errorRole if:set="failOnError.info" role="info"/>
+        </schematron>
     </target>
     
-    <target name="schematron-validate-topics">
-        <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
+    <target name="-schematron-validate-topics">
+        <!--<loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
             <sequential>
                 <echo level="info">Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
@@ -102,7 +115,20 @@
                     <errorRole if:set="failOnError.info" role="info"/>
                 </schematron>
             </sequential>
-        </for>
+        </for>-->
+        <echo level="info">Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
+        <schematron
+            schematronFile="${schematron.files}"
+            expectSuccess="true"
+            schematronProcessingEngine="${schematron.processing.engine}"
+            failOnError="false">
+            <xmlcatalog refid="dita.catalog"/>
+            <ditafileset format="dita"/>
+            <errorRole if:set="failOnError.fatal" role="fatal"/>
+            <errorRole if:set="failOnError.error" role="error"/>
+            <errorRole if:set="failOnError.warning" role="warning"/>
+            <errorRole if:set="failOnError.info" role="info"/>
+        </schematron>
     </target>
     
 </project>
