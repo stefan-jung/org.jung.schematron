@@ -5,21 +5,21 @@ jdk:
   - oraclejdk8
 
 env:
-  - DITA-OT-VERSION=3.1.2
+  - DITAOT="3.1.2"
 
 before_script:
-  - URL="https://github.com/dita-ot/dita-ot/releases/download/$DITA-OT-VERSION/dita-ot-$DITA-OT-VERSION.zip"
+  - URL="https://github.com/dita-ot/dita-ot/releases/download/$DITAOT/dita-ot-$DITAOT.zip"
   - zip -qr org.doctales.schematron.zip . -x *.zip* *.git/* *temp/* *out/*
   - curl -LO $URL
-  - unzip -q dita-ot-$DITA-OT-VERSION.zip
-  - chmod +x dita-ot-$DITA-OT-VERSION/bin/dita
-  - chmod +x dita-ot-$DITA-OT-VERSION/bin/ant
-  - dita-ot-$DITA-OT-VERSION/bin/dita --install https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
-  - dita-ot-$DITA-OT-VERSION/bin/dita --install org.doctales.schematron.zip
+  - unzip -q dita-ot-$DITAOT.zip
+  - chmod +x dita-ot-$DITAOT/bin/dita
+  - chmod +x dita-ot-$DITAOT/bin/ant
+  - dita-ot-$DITAOT/bin/dita --install https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
+  - dita-ot-$DITAOT/bin/dita --install org.doctales.schematron.zip
   - BASEDIR=$(dirname "$0")
 
 script:
-  - dita-ot-$DITA-OT-VERSION/bin/dita -i samples/sample.ditamap -f pdf2 -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -DfailOnError.fatal=true -DfailOnError.error=true
+  - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -DfailOnError.fatal=true -DfailOnError.error=true
 
 notifications:
   slack:
