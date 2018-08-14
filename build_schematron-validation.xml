@@ -63,7 +63,6 @@
         </if>
     </target>
     
-    <!--<target name="schematron-validate-maps" depends="-is-ant-contrib-available">-->
     <target name="schematron-validate-maps">
         <loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
         <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
@@ -85,7 +84,6 @@
         </for>
     </target>
     
-    <!--<target name="schematron-validate-topics" depends="-is-ant-contrib-available">-->
     <target name="schematron-validate-topics">
         <loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
         <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">

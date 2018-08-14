@@ -16,7 +16,7 @@ org.doctales.schematron
 
 | Parameter | Description |
 |:----------|:------------|
-| **schematron.processing.engine** | Schematron processing engine: `xslt` (default), `schematron` or `pure` |
+| **schematron.processing.engine** | Schematron processing engine: `schematron` (default), `xslt` or `pure` |
 | **schematron.map.validation.files** | Comma separated list of Schematron files for map validation |
 | **schematron.topic.validation.files** | Comma separated list of Schematron files for topic validation |
 
