@@ -3,7 +3,7 @@
     <sch:pattern>
         <sch:rule context="*[contains(@class, 'topic/title')]">
             <sch:report test="*[contains(@class, 'hi-d/')]" role="error">
-                Do not use inline formatting in &lt;title&gt;
+                [<sch:value-of select="//*[1]/@id"/>]: Do not use inline formatting in &lt;title&gt;
             </sch:report>
         </sch:rule>
     </sch:pattern>
