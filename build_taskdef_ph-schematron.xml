@@ -12,6 +12,7 @@
         <pathelement location="lib/ph-commons-9.1.4.jar"/>
         <pathelement location="lib/ph-jaxb-9.1.4.jar"/>
         <pathelement location="lib/ph-xml-9.1.4.jar"/>
+        <pathelement location="lib/ph-schematron-5.0.5.jar"/>
         <pathelement location="lib/ph-schematron-ant-task-5.0.5.jar"/>
     </path>
     <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
