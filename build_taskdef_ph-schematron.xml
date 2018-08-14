@@ -5,6 +5,8 @@
 -->
 <project>
     <path id="ph-schematron.path">
+        <pathelement location="lib/ph-jaxb-9.1.4.jar"/>
+        <pathelement location="lib/ph-isorelax-1.1.1.jar"/>
         <pathelement location="lib/ph-schematron-ant-task-5.0.5.jar"/>
     </path>
     <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
