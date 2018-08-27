@@ -15,7 +15,6 @@ before_script:
   - unzip -q dita-ot-$DITAOT.zip
   - chmod +x dita-ot-$DITAOT/bin/dita
   - chmod +x dita-ot-$DITAOT/bin/ant
-  - dita-ot-$DITAOT/bin/dita --install https://github.com/doctales/org.doctales.ant-contrib/archive/master.zip
   - dita-ot-$DITAOT/bin/dita --install org.doctales.schematron.zip
   - BASEDIR=$(dirname "$0")
 
