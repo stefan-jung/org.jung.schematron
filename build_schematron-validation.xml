@@ -1,133 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  Copyright 2017 DOCTALES. All rights reserved.
+  Copyright 2017, 2018 DOCTALES. All rights reserved.
   See the accompanying LICENSE file for applicable license.
 -->
 <project basedir="." name="build_dita2schematron" xmlns:if="ant:if" xmlns:unless="ant:unless">
     
     <import file="build_taskdef_ph-schematron.xml"/>
     
-    <target name="-is-ant-contrib-available">
-        <pathconvert refid="dost.class.path" property="dost.class.path.property"/>
-        <condition property="ant-contrib-available" value="true">
-            <contains string="${dost.class.path.property}" substring="ant-contrib"/>
-        </condition>
-        <fail unless="ant-contrib-available">ant-contrib is not found on classpath</fail>
-    </target>
-    
-    <target name="schematron-validation" depends="-is-ant-contrib-available">
+    <target name="schematron-validation">
         <property name="schematron.processing.engine" value="schematron"/>
-        
-        <!-- Schematron DITA-Map validation -->
-        <if>
-            <isset property="schematron.map.validation.files"/>
-            <then>
-                <for list="${schematron.map.validation.files}" param="schematron.files" delimiter=",">
-                    <sequential>
-                        <antcall target="-schematron-validate-maps">
-                            <param name="schematron.files" value="@{schematron.files}"/>
-                        </antcall>
-                    </sequential>
-                </for>
-            </then>
-            <elseif>
-                <not>
-                    <isset property="schematron.map.validation.files"/>
-                </not>
-                <then>
-                    <echo level="info">'schematron.map.validation.files' is not set, skip Schematron DITA-Map validation</echo>
-                </then>
-            </elseif>
-        </if>
-        
-        <!-- Schematron DITA-Topic validation -->
-        <if>
-            <isset property="schematron.topic.validation.files"/>
-            <then>
-                <for list="${schematron.topic.validation.files}" param="schematron.files" delimiter=",">
-                    <sequential>
-                        <antcall target="-schematron-validate-topics">
-                            <param name="schematron.files" value="@{schematron.files}"/>
-                        </antcall>
-                    </sequential>
-                </for>
-            </then>
-            <elseif>
-                <not>
-                    <isset property="schematron.topic.validation.files"/>
-                </not>
-                <then>
-                    <echo level="info">'schematron.topic.validation.files' is not set, skip Schematron DITA-Topic validation</echo>
-                </then>
-            </elseif>
-        </if>
+        <schematron-validate if:set="schematron.map.validation.files"
+            target="-schematron-validate-maps"
+            files="${schematron.map.validation.files}"
+        />
+        <schematron-validate if:set="schematron.topic.validation.files"
+            target="-schematron-validate-topics"
+            files="${schematron.topic.validation.files}"
+        />
     </target>
     
     <target name="-schematron-validate-maps">
-        <!--<loadfile srcfile="${dita.temp.dir}/fullditamap.list" property="fullditamap.list.file"/>
-        <for list="${fullditamap.list.file}" param="map.file" delimiter="${line.separator}">
-            <sequential>
-                <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-                <schematron
-                    schematronFile="${schematron.files}"
-                    expectSuccess="true"
-                    schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="false">
-                    <xmlcatalog refid="dita.catalog"/>
-                    <ditafileset format="ditamap"/>
-                    <errorRole if:set="failOnError.fatal" role="fatal"/>
-                    <errorRole if:set="failOnError.error" role="error"/>
-                    <errorRole if:set="failOnError.warning" role="warning"/>
-                    <errorRole if:set="failOnError.info" role="info"/>
-                </schematron>
-            </sequential>
-        </for>-->
         <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
         <schematron
             schematronFile="${schematron.files}"
             expectSuccess="true"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="false">
-            <xmlcatalog refid="dita.catalog"/>
-            <ditafileset format="ditamap"/>
-            <errorRole if:set="failOnError.fatal" role="fatal"/>
-            <errorRole if:set="failOnError.error" role="error"/>
-            <errorRole if:set="failOnError.warning" role="warning"/>
-            <errorRole if:set="failOnError.info" role="info"/>
+            failOnError="true">
+            <xmlcatalog refid="dita.catalog" />
+            <ditafileset format="ditamap" />
+            <!-- FIXME Publication fails. It does not matter, whether the failOnError.error property is set or not -->
+            <errorRole if:set="failOnError.fatal" role="fatal" />
+            <errorRole if:set="failOnError.error" role="error" />
+            <errorRole if:set="failOnError.warning" role="warning" />
+            <errorRole if:set="failOnError.info" role="info" />
         </schematron>
     </target>
     
     <target name="-schematron-validate-topics">
-        <!--<loadfile srcfile="${dita.temp.dir}/fullditatopic.list" property="fullditatopic.list.file"/>
-        <for list="${fullditatopic.list.file}" param="topic.file" delimiter="${line.separator}">
-            <sequential>
-                <echo level="info">Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-                <schematron
-                    schematronFile="${schematron.files}"
-                    expectSuccess="true"
-                    schematronProcessingEngine="${schematron.processing.engine}"
-                    failOnError="false">
-                    <xmlcatalog refid="dita.catalog"/>
-                    <ditafileset format="dita"/>
-                    <errorRole if:set="failOnError.fatal" role="fatal"/>
-                    <errorRole if:set="failOnError.error" role="error"/>
-                    <errorRole if:set="failOnError.warning" role="warning"/>
-                    <errorRole if:set="failOnError.info" role="info"/>
-                </schematron>
-            </sequential>
-        </for>-->
-        <echo level="info">Validate '@{topic.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
+        <echo level="info">Validate topics with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
         <schematron
             schematronFile="${schematron.files}"
             expectSuccess="true"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="false">
-            <xmlcatalog refid="dita.catalog"/>
-            <ditafileset format="dita"/>
-            <errorRole if:set="failOnError.fatal" role="fatal"/>
-            <errorRole if:set="failOnError.error" role="error"/>
-            <errorRole if:set="failOnError.warning" role="warning"/>
-            <errorRole if:set="failOnError.info" role="info"/>
+            failOnError="true">
+            <xmlcatalog refid="dita.catalog" />
+            <ditafileset format="dita" />
+            <errorRole if:set="failOnError.fatal" role="fatal" />
+            <errorRole if:set="failOnError.error" role="error" />
+            <errorRole if:set="failOnError.warning" role="warning" />
+            <errorRole if:set="failOnError.info" role="info" />
         </schematron>
     </target>
     

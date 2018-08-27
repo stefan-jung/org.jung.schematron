@@ -15,5 +15,25 @@
         <pathelement location="lib/ph-schematron-5.0.5.jar"/>
         <pathelement location="lib/ph-schematron-ant-task-5.0.5.jar"/>
     </path>
+    
+    <!-- Task definition of ph-schematron task -->
     <taskdef name="schematron" classname="com.helger.schematron.ant.Schematron" classpathref="ph-schematron.path"/>
+    
+    <!-- JavaScript task to iterate over comma separated list of files -->
+    <scriptdef name="schematron-validate" language="javascript">
+        <attribute name="target"/>
+        <attribute name="files"/>
+        <![CDATA[
+            var sch = attributes.get("files").split(",");
+            sch.forEach(function(s) {
+                self.log("Schematron File ist " + s);
+                var task = project.createTask("antcall");
+                task.setTarget(attributes.get("target"));
+                var param = task.createParam();
+                param.setName("schematron.files");
+                param.setValue(s);
+                task.perform();
+            });
+        ]]>
+    </scriptdef>
 </project>
