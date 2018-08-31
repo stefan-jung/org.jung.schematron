@@ -28,7 +28,6 @@
             failOnError="true">
             <xmlcatalog refid="dita.catalog" />
             <ditafileset format="ditamap" />
-            <!-- FIXME Publication fails. It does not matter, whether the failOnError.error property is set or not -->
             <errorRole if:set="failOnError.fatal" role="fatal" />
             <errorRole if:set="failOnError.error" role="error" />
             <errorRole if:set="failOnError.warning" role="warning" />
