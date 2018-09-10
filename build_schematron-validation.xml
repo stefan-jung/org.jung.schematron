@@ -7,16 +7,25 @@
     
     <import file="build_taskdef_ph-schematron.xml"/>
     
+    <!-- Default failing rules -->
+    <property name="schematron.fail" value="true" />
+    <property name="schematron.failon.fatal" value="true" />
+    <property name="schematron.failon.error" value="true" />
+    <property name="schematron.failon.warning" value="false" />
+    <property name="schematron.failon.info" value="false" />
+    
     <target name="schematron-validation">
         <property name="schematron.processing.engine" value="schematron"/>
         <schematron-validate if:set="schematron.map.validation.files"
             target="-schematron-validate-maps"
             files="${schematron.map.validation.files}"
         />
+        <echo unless:set="schematron.map.validation.files">Skip Schematron DITA Map validation</echo>
         <schematron-validate if:set="schematron.topic.validation.files"
             target="-schematron-validate-topics"
             files="${schematron.topic.validation.files}"
         />
+        <echo unless:set="schematron.topic.validation.files">Skip Schematron DITA Topic validation</echo>
     </target>
     
     <target name="-schematron-validate-maps">
@@ -25,13 +34,13 @@
             schematronFile="${schematron.files}"
             expectSuccess="true"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="true">
+            failOnError="${schematron.fail}">
             <xmlcatalog refid="dita.catalog" />
             <ditafileset format="ditamap" />
-            <errorRole if:set="failOnError.fatal" role="fatal" />
-            <errorRole if:set="failOnError.error" role="error" />
-            <errorRole if:set="failOnError.warning" role="warning" />
-            <errorRole if:set="failOnError.info" role="info" />
+            <errorRole if:true="schematron.failon.fatal" role="fatal" />
+            <errorRole if:true="schematron.failon.error" role="error" />
+            <errorRole if:true="schematron.failon.warning" role="warning" />
+            <errorRole if:true="schematron.failon.info" role="info" />
         </schematron>
     </target>
     
@@ -41,13 +50,13 @@
             schematronFile="${schematron.files}"
             expectSuccess="true"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="true">
+            failOnError="${schematron.fail}">
             <xmlcatalog refid="dita.catalog" />
             <ditafileset format="dita" />
-            <errorRole if:set="failOnError.fatal" role="fatal" />
-            <errorRole if:set="failOnError.error" role="error" />
-            <errorRole if:set="failOnError.warning" role="warning" />
-            <errorRole if:set="failOnError.info" role="info" />
+            <errorRole if:true="schematron.failon.fatal" role="fatal" />
+            <errorRole if:true="schematron.failon.error" role="error" />
+            <errorRole if:true="schematron.failon.warning" role="warning" />
+            <errorRole if:true="schematron.failon.info" role="info" />
         </schematron>
     </target>
     

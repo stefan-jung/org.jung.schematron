@@ -2,7 +2,7 @@
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
     <sch:pattern>
         <sch:rule context="*[contains(@class, 'topic/title')]">
-            <sch:report test="*[contains(@class, 'hi-d/')]" role="warning">
+            <sch:report test="*[contains(@class, 'hi-d/')]" role="fatal">
                 [<sch:value-of select="//*[1]/@id"/>]: Do not use inline formatting in &lt;title>
             </sch:report>
         </sch:rule>

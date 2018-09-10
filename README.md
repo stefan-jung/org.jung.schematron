@@ -12,6 +12,7 @@ org.doctales.schematron
 
 **ph-schematron** is a Java library that validates XML documents via ISO Schematron. It is licensed under Apache 2.0 license.
 
+
 ## Parameters
 
 | Parameter | Description |
@@ -19,6 +20,12 @@ org.doctales.schematron
 | **schematron.processing.engine** | Schematron processing engine: `schematron` (default), `xslt` or `pure` |
 | **schematron.map.validation.files** | Comma separated list of Schematron files for map validation |
 | **schematron.topic.validation.files** | Comma separated list of Schematron files for topic validation |
+| **schematron.fail** | Indicates, whether the build should fail, if a role fires with a certain role level. Possible values: `true` (default) or `false` |
+| **schematron.failon.fatal** | Indicates, whether the build should fail, if a Schematron rule with role `fatal` is fired. Possible values: `true` (default) or `false` |
+| **schematron.failon.error** | Indicates, whether the build should fail, if a Schematron rule with role `error` is fired. Possible values: `true` (default) or `false` |
+| **schematron.failon.warning** | Indicates, whether the build should fail, if a Schematron rule with role `warning` is fired. Possible values: `true` or `false` (default) |
+| **schematron.failon.info** | Indicates, whether the build should fail, if a Schematron rule with role `info` is fired. Possible values: `true` or `false` (default) |
+
 
 ## Installation
 
@@ -38,5 +45,6 @@ dita --input my.ditamap \
      --format pdf2 \
      --verbose \
      -Dschematron.topic.validation.files=topic-validation-1.sch,topic-validation-2.sch \
-     -Dschematron.map.validation.files=map-validation.sch
+     -Dschematron.map.validation.files=map-validation.sch \
+     -DfailOnError.warning=true
 ```
