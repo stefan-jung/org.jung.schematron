@@ -5,6 +5,8 @@
   See the accompanying LICENSE file for applicable license.
 -->
 <plugin id="org.doctales.schematron">
+  
+  <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-2.2.11.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-runtime-2.2.11.jar"/>
