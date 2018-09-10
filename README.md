@@ -46,5 +46,6 @@ dita --input my.ditamap \
      --verbose \
      -Dschematron.topic.validation.files=topic-validation-1.sch,topic-validation-2.sch \
      -Dschematron.map.validation.files=map-validation.sch \
-     -DfailOnError.warning=true
+     -Dschematron.fail=true \     
+     -Dschematron.failon.error=true
 ```
