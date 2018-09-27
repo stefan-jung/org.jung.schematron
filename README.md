@@ -12,13 +12,15 @@ org.doctales.schematron
 
 **ph-schematron** is a Java library that validates XML documents via ISO Schematron. It is licensed under Apache 2.0 license.
 
+
 ## Parameters
 
 | Parameter | Description |
 |:----------|:------------|
-| **schematron.processing.engine** | Schematron processing engine: `schematron` (default), `xslt` or `pure` |
+| **schematron.processing.engine** | Schematron processing engine: `pure` (default), `schematron` or `xslt` |
 | **schematron.map.validation.files** | Comma separated list of Schematron files for map validation |
 | **schematron.topic.validation.files** | Comma separated list of Schematron files for topic validation |
+
 
 ## Installation
 
