@@ -5,15 +5,51 @@
   See the accompanying LICENSE file for applicable license.
 -->
 <plugin id="org.doctales.schematron">
+  
+  <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-2.2.11.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-runtime-2.2.11.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-collection-9.1.4.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-commons-9.1.4.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-9.1.4.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-xml-9.1.4.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.0.5.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.0.5.jar"/>
+  
+  <feature extension="dita.conductor.lib.import" file="lib/ph-collection-9.1.5.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/ph-commons-9.1.5.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-9.1.5.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/ph-xml-9.1.5.jar"/>
+  
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.0.6.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.0.6.jar"/>
+  
   <feature extension="dita.conductor.target.relative" file="build.xml"/>
   <feature extension="depend.preprocess.post" value="schematron-validation"/>
+  
+  <transtype name="base" abstract="true" desc="Common">
+    <param name="schematron.processing.engine" desc="Engine used to validate DITA maps and topics" type="enum">
+      <val default="true" desc="Schematron engine">schematron</val>
+      <val desc="XSLT engine">xslt</val>
+      <val desc="Pure engine">pure</val>
+    </param>
+    <param name="schematron.map.validation.files" desc="Comma separated list of Schematron files for map validation" type="file"/>
+    <param name="schematron.topic.validation.files" desc="Comma separated list of Schematron files for topic validation" type="file"/>
+    <param name="schematron.fail" desc="Indicates, whether the build should fail, if a role fires with a certain role level." type="enum">
+      <val default="true">true</val>
+      <val>false</val>
+    </param>
+    <param name="schematron.failon.fatal" desc="Indicates, whether the build should fail, if a Schematron rule with role 'fatal' is fired." type="enum">
+      <val default="true">true</val>
+      <val>false</val>
+    </param>
+    <param name="schematron.failon.error" desc="Indicates, whether the build should fail, if a Schematron rule with role 'error' is fired." type="enum">
+      <val default="true">true</val>
+      <val>false</val>
+    </param>
+    <param name="schematron.failon.warning" desc="Indicates, whether the build should fail, if a Schematron rule with role 'warning' is fired." type="enum">
+      <val>true</val>
+      <val default="true">false</val>
+    </param>
+    <param name="schematron.failon.info" desc="Indicates, whether the build should fail, if a Schematron rule with role 'info' is fired." type="enum">
+      <val>true</val>
+      <val default="true">false</val>
+    </param>
+  </transtype>
+  
 </plugin>
