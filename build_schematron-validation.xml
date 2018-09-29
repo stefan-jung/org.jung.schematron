@@ -13,6 +13,7 @@
     <property name="schematron.failon.error" value="true" />
     <property name="schematron.failon.warning" value="false" />
     <property name="schematron.failon.info" value="false" />
+    <property name="svrlDirectory" value="${output.dir}" />
     
     <target name="schematron-validation">
         <property name="schematron.processing.engine" value="pure"/>
@@ -20,12 +21,12 @@
             target="-schematron-validate-maps"
             files="${schematron.map.validation.files}"
         />
-        <echo unless:set="schematron.map.validation.files">Skip Schematron DITA Map validation</echo>
+        <echo unless:set="schematron.map.validation.files" level="info">Skip Schematron DITA Map validation</echo>
         <schematron-validate if:set="schematron.topic.validation.files"
             target="-schematron-validate-topics"
             files="${schematron.topic.validation.files}"
         />
-        <echo unless:set="schematron.topic.validation.files">Skip Schematron DITA Topic validation</echo>
+        <echo unless:set="schematron.topic.validation.files" level="info">Skip Schematron DITA Topic validation</echo>
     </target>
     
     <target name="-schematron-validate-maps">
@@ -33,6 +34,7 @@
         <schematron
             schematronFile="${schematron.files}"
             expectSuccess="true"
+            svrlDirectory="${svrlDirectory}"
             schematronProcessingEngine="${schematron.processing.engine}"
             failOnError="${schematron.fail}">
             <xmlcatalog refid="dita.catalog" />
@@ -49,6 +51,7 @@
         <schematron
             schematronFile="${schematron.files}"
             expectSuccess="true"
+            svrlDirectory="${svrlDirectory}"
             schematronProcessingEngine="${schematron.processing.engine}"
             failOnError="${schematron.fail}">
             <xmlcatalog refid="dita.catalog" />
