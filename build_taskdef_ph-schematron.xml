@@ -10,6 +10,11 @@
         classpathref="dost.class.path"
     />
     
+    <taskdef name="schematron-preprocess"
+        classname="com.helger.schematron.ant.SchematronPreprocess"
+        classpathref="dost.class.path"
+    />
+    
     <!-- JavaScript task to iterate over comma separated list of files -->
     <scriptdef name="schematron-validate" language="javascript">
         <attribute name="target"/>
