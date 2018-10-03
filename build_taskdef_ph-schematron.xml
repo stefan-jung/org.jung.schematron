@@ -22,7 +22,7 @@
         <![CDATA[
             var sch = attributes.get("files").split(",");
             sch.forEach(function(s) {
-                self.log("Schematron File ist " + s);
+                self.log("Schematron File: " + s);
                 var task = project.createTask("antcall");
                 task.setTarget(attributes.get("target"));
                 var param = task.createParam();

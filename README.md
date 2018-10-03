@@ -1,9 +1,7 @@
-![DOCTALES Logo](https://doctales.github.io/images/doctales-logo-without-subtitle.svg)
-
-- - - -
-
 org.doctales.schematron
 ===========================
+
+![DOCTALES Logo](https://doctales.github.io/images/doctales-logo-without-subtitle.svg)
 
 [![Build Status](https://travis-ci.org/doctales/org.doctales.schematron.svg?branch=master)](https://travis-ci.org/doctales/org.doctales.schematron)
 [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
@@ -25,6 +23,7 @@ org.doctales.schematron
 | **schematron.failon.error** | Indicates, whether the build should fail, if a Schematron rule with role `error` is fired. Possible values: `true` (default) or `false` |
 | **schematron.failon.warning** | Indicates, whether the build should fail, if a Schematron rule with role `warning` is fired. Possible values: `true` or `false` (default) |
 | **schematron.failon.info** | Indicates, whether the build should fail, if a Schematron rule with role `info` is fired. Possible values: `true` or `false` (default) |
+| **schematron.svrl.dir** | Directory, where Schematron results (SVRL files) should be saved. If not set, no SVRL files are generated. |
 
 
 
