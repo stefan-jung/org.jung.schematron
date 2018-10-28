@@ -10,17 +10,15 @@
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-2.2.11.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-runtime-2.2.11.jar"/>
-  
   <feature extension="dita.conductor.lib.import" file="lib/ph-collection-9.1.5.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-commons-9.1.5.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-9.1.5.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-xml-9.1.5.jar"/>
-  
   <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.0.6.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.0.6.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/slf4j-simple-1.7.25.jar"/>
   
   <feature extension="dita.xsl.messages" file="resources/messages.xml"/>
-  
   <feature extension="dita.conductor.target.relative" file="build.xml"/>
   <feature extension="depend.preprocess.post" value="schematron-validation"/>
   
