@@ -170,9 +170,12 @@
     
     <target name="-schematron-validate-maps">
         <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-        
         <record name="${schematron.logfile}" action="start" append="true"/>
-        <!-- If the property svrlDirectory is set, task generates SVRL files in the specified directory. -->
+        <!--
+            If the property svrlDirectory is set, task generates SVRL files in the specified directory.
+            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
+            So the SVRL feature is (ATM) more or less useless.
+        -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
             expectSuccess="true"
@@ -203,9 +206,12 @@
     
     <target name="-schematron-validate-topics">
         <echo level="info">Validate topics with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-        
         <record name="${schematron.logfile}" action="start" append="true"/>
-        <!-- If the property svrlDirectory is set, task generates SVRL files in the specified directory. -->
+        <!--
+            If the property svrlDirectory is set, task generates SVRL files in the specified directory.
+            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
+            So the SVRL feature is (ATM) more or less useless.
+        -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
             expectSuccess="true"
