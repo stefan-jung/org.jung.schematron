@@ -6,7 +6,7 @@ jdk:
 
 env:
   global:
-    - DITAOT="3.1.2"
+    - DITAOT="3.3.1"
     - URL="https://github.com/dita-ot/dita-ot/releases/download/$DITAOT/dita-ot-$DITAOT.zip"
 
 before_script:
@@ -19,7 +19,7 @@ before_script:
   - BASEDIR=$(dirname "$0")
 
 script:
-  - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -v -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -Dschematron.fail=false -Dschematron.failon.fatal=true -Dschematron.failon.error=true -Dschematron.failon.warning=false -Dschematron.failon.info=false
+  - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -v -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -Dschematron.fail=false -Dschematron.failon.fatal=true -Dschematron.failon.error=true -Dschematron.failon.warning=true -Dschematron.failon.info=false
 
 notifications:
   slack:
