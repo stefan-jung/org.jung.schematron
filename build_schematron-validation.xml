@@ -7,34 +7,181 @@
     
     <import file="build_taskdef_ph-schematron.xml"/>
     
-    <!-- Default failing rules -->
-    <property name="schematron.fail" value="true" />
-    <property name="schematron.failon.fatal" value="true" />
-    <property name="schematron.failon.error" value="true" />
-    <property name="schematron.failon.warning" value="false" />
-    <property name="schematron.failon.info" value="false" />
+    <!-- Default properties -->
+    <property unless:set="schematron.fail"
+        name="schematron.fail"
+        value="false"
+    />
+    <property unless:set="schematron.failon.fatal"
+        name="schematron.failon.fatal"
+        value="true"
+    />
+    <property unless:set="schematron.failon.error"
+        name="schematron.failon.error"
+        value="true"
+    />
+    <property unless:set="schematron.failon.warning"
+        name="schematron.failon.warning"
+        value="false"
+    />
+    <property unless:set="schematron.failon.info"
+        name="schematron.failon.info"
+        value="false"
+    />
+    <property unless:set="schematron.processing.engine"
+        name="schematron.processing.engine"
+        value="pure"
+    />
+    <basename unless:set="dita.input.filename" file="${args.input}" property="dita.input.filename" suffix=".ditamap"/>
+    <property name="schematron.logfile"
+        value="${output.dir}/${dita.input.filename}.schematron.log"
+    />
     
     <target name="schematron-validation">
-        <property name="schematron.processing.engine" value="schematron"/>
+        <condition property="schematron-validation-active">
+            <or>
+                <isset property="schematron.map.validation.files"/>
+                <isset property="schematron.topic.validation.files"/>
+            </or>
+        </condition>
+        <echo if:set="schematron-validation-active" level="info">*******************************************************************</echo>
+        <echo if:set="schematron-validation-active" level="info">schematron.fail=${schematron.fail}</echo>
+        <echo if:set="schematron-validation-active" level="info">schematron.failon.fatal=${schematron.failon.fatal}</echo>
+        <echo if:set="schematron-validation-active" level="info">schematron.failon.error=${schematron.failon.error}</echo>
+        <echo if:set="schematron-validation-active" level="info">schematron.failon.warning=${schematron.failon.warning}</echo>
+        <echo if:set="schematron-validation-active" level="info">schematron.failon.info=${schematron.failon.info}</echo>
+        <echo if:set="svrlDirectory" level="info">svrlDirectory=${svrlDirectory}</echo>
+        <echo if:set="schematron-validation-active" level="info">*******************************************************************</echo>
+        
+        <condition property="old.schematron.log">
+            <available file="${schematron.logfile}" type="file"/>
+        </condition>
+        <delete if:set="old.schematron.log" file="${schematron.logfile}" failonerror="false" quiet="true" verbose="false"/>
+        
+        <echo unless:set="schematron.map.validation.files" level="info">Skip Schematron DITA Map validation</echo>
+        <echo if:set="schematron.map.validation.files" level="info">Validate DITA Maps with Schematron</echo>
         <schematron-validate if:set="schematron.map.validation.files"
             target="-schematron-validate-maps"
             files="${schematron.map.validation.files}"
         />
-        <echo unless:set="schematron.map.validation.files">Skip Schematron DITA Map validation</echo>
+
+        <echo unless:set="schematron.topic.validation.files" level="info">Skip Schematron DITA Topic validation</echo>
+        <echo if:set="schematron.map.validation.files" level="info">Validate DITA Topics with Schematron</echo>
         <schematron-validate if:set="schematron.topic.validation.files"
             target="-schematron-validate-topics"
             files="${schematron.topic.validation.files}"
         />
-        <echo unless:set="schematron.topic.validation.files">Skip Schematron DITA Topic validation</echo>
+
+        <!-- Strip debugging information -->
+        <condition property="schematron.logfile.exists" value="true">
+            <available file="${schematron.logfile}"/>
+        </condition>
+        <move if:set="schematron.logfile.exists" 
+            file="${schematron.logfile}" 
+            tofile="${schematron.logfile}.temp" 
+            quiet="true" verbose="false" 
+            overwrite="true"
+        />
+        <copy if:set="schematron.logfile.exists"
+            file="${schematron.logfile}.temp"
+            tofile="${schematron.logfile}"
+            quiet="true"
+            verbose="false"
+            overwrite="true">
+            <filterchain>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="com.helger"/>
+                </linecontainsregexp>
+            </filterchain>
+        </copy>
+        <delete file="${schematron.logfile}.temp" verbose="false" quiet="true" failonerror="false"/>
+        
+        <!-- Break the build, if logfile contains errors -->
+        <condition if:set="schematron.logfile.exists" property="fail.fatal">
+            <and>
+                <istrue value="${schematron.fail}"/>
+                <istrue value="${schematron.failon.fatal}"/>
+            </and>
+        </condition>
+        <dita-ot-fail if:set="fail.fatal" id="DTSS001F">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[fatal]" casesensitive="false"/>
+            </condition>
+        </dita-ot-fail>
+        
+        <condition if:set="schematron.logfile.exists" property="fail.error">
+            <and>
+                <istrue value="${schematron.fail}"/>
+                <istrue value="${schematron.failon.error}"/>
+            </and>
+        </condition>
+        <dita-ot-fail if:set="fail.error" id="DTSS002E">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[error]" casesensitive="false"/>
+            </condition>
+        </dita-ot-fail>
+        
+        <condition if:set="schematron.logfile.exists" property="fail.warning">
+            <and>
+                <istrue value="${schematron.fail}"/>
+                <istrue value="${schematron.failon.warning}"/>
+            </and>
+        </condition>
+        <dita-ot-fail if:set="fail.warning" id="DTSS003W">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[warn]" casesensitive="false"/>
+            </condition>
+        </dita-ot-fail>
+        
+        <condition if:set="schematron.logfile.exists" property="fail.info">
+            <and>
+                <istrue value="${schematron.fail}"/>
+                <istrue value="${schematron.failon.info}"/>
+            </and>
+        </condition>
+        <dita-ot-fail if:set="fail.info" id="DTSS004I">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[info]" casesensitive="false"/>
+            </condition>
+        </dita-ot-fail>
+        
+        <fail if:set="fail.fatal">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[fatal]" casesensitive="false"/>
+            </condition>
+        </fail>
+        <fail if:set="fail.error">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[error]" casesensitive="false"/>
+            </condition>
+        </fail>
+        <fail if:set="fail.warning">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[warn]" casesensitive="false"/>
+            </condition>
+        </fail>
+        <fail if:set="fail.info">
+            <condition>
+                <resourcecontains resource="${schematron.logfile}" substring="[info]" casesensitive="false"/>
+            </condition>
+        </fail>
+
     </target>
     
     <target name="-schematron-validate-maps">
         <echo level="info">Validate '@{map.file}' with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-        <schematron
+        <record name="${schematron.logfile}" action="start" append="true"/>
+        <!--
+            If the property svrlDirectory is set, task generates SVRL files in the specified directory.
+            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
+            So the SVRL feature is (ATM) more or less useless.
+        -->
+        <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
             expectSuccess="true"
+            svrlDirectory="${schematron.svrl.dir}"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="${schematron.fail}">
+            failOnError="false">
             <xmlcatalog refid="dita.catalog" />
             <ditafileset format="ditamap" />
             <errorRole if:true="schematron.failon.fatal" role="fatal" />
@@ -42,15 +189,35 @@
             <errorRole if:true="schematron.failon.warning" role="warning" />
             <errorRole if:true="schematron.failon.info" role="info" />
         </schematron>
+        <schematron unless:set="schematron.svrl.dir"
+            schematronFile="${schematron.files}"
+            expectSuccess="true"
+            schematronProcessingEngine="${schematron.processing.engine}"
+            failOnError="false">
+            <xmlcatalog refid="dita.catalog" />
+            <ditafileset format="ditamap" />
+            <errorRole if:true="schematron.failon.fatal" role="fatal" />
+            <errorRole if:true="schematron.failon.error" role="error" />
+            <errorRole if:true="schematron.failon.warning" role="warning" />
+            <errorRole if:true="schematron.failon.info" role="info" />
+        </schematron>
+        <record name="${schematron.logfile}" action="stop"/>
     </target>
     
     <target name="-schematron-validate-topics">
         <echo level="info">Validate topics with '${schematron.files}' using the processing engine '${schematron.processing.engine}'</echo>
-        <schematron
+        <record name="${schematron.logfile}" action="start" append="true"/>
+        <!--
+            If the property svrlDirectory is set, task generates SVRL files in the specified directory.
+            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
+            So the SVRL feature is (ATM) more or less useless.
+        -->
+        <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
             expectSuccess="true"
+            svrlDirectory="${schematron.svrl.dir}"
             schematronProcessingEngine="${schematron.processing.engine}"
-            failOnError="${schematron.fail}">
+            failOnError="false">
             <xmlcatalog refid="dita.catalog" />
             <ditafileset format="dita" />
             <errorRole if:true="schematron.failon.fatal" role="fatal" />
@@ -58,6 +225,19 @@
             <errorRole if:true="schematron.failon.warning" role="warning" />
             <errorRole if:true="schematron.failon.info" role="info" />
         </schematron>
+        <schematron unless:set="schematron.svrl.dir"
+            schematronFile="${schematron.files}"
+            expectSuccess="true"
+            schematronProcessingEngine="${schematron.processing.engine}"
+            failOnError="false">
+            <xmlcatalog refid="dita.catalog" />
+            <ditafileset format="dita" />
+            <errorRole if:true="schematron.failon.fatal" role="fatal" />
+            <errorRole if:true="schematron.failon.error" role="error" />
+            <errorRole if:true="schematron.failon.warning" role="warning" />
+            <errorRole if:true="schematron.failon.info" role="info" />
+        </schematron>
+        <record name="${schematron.logfile}" action="stop"/>
     </target>
     
 </project>

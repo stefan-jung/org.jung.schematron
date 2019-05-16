@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages xmlns:dita="http://dita-ot.sourceforge.net">
+  
+    <message id="DTSS001F" type="FATAL">
+        <reason>The processed DITA files violate Schematron rules</reason>
+        <response/>
+    </message>
+    <message id="DTSS002E" type="ERROR">
+        <reason>The processed DITA files violate Schematron rules</reason>
+        <response/>
+    </message>
+    <message id="DTSS003W" type="WARN">
+        <reason>The processed DITA files violate Schematron rules</reason>
+        <response/>
+    </message>
+    <message id="DTSS004I" type="INFO">
+        <reason>The processed DITA files violate Schematron rules</reason>
+        <response/>
+    </message>
+  
+</messages>
