@@ -50,7 +50,7 @@
         <echo if:set="schematron-validation-active" level="info">schematron.failon.error=${schematron.failon.error}</echo>
         <echo if:set="schematron-validation-active" level="info">schematron.failon.warning=${schematron.failon.warning}</echo>
         <echo if:set="schematron-validation-active" level="info">schematron.failon.info=${schematron.failon.info}</echo>
-        <echo if:set="svrlDirectory" level="info">svrlDirectory=${svrlDirectory}</echo>
+        <echo if:set="schematron.svrl.dir" level="info">schematron.svrl.dir=${schematron.svrl.dir}</echo>
         <echo if:set="schematron-validation-active" level="info">*******************************************************************</echo>
         
         <condition property="old.schematron.log">
