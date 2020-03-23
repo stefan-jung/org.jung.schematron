@@ -19,7 +19,11 @@ before_script:
   - BASEDIR=$(dirname "$0")
 
 script:
+  - echo with SVRL
   - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -v -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -Dschematron.fail=false -Dschematron.failon.fatal=true -Dschematron.failon.error=true -Dschematron.failon.warning=true -Dschematron.failon.info=false -Dschematron.svrl.dir=out -Dclean.temp=no 
+  - echo with Logfile
+  - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -v -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -Dschematron.fail=false -Dschematron.failon.fatal=true -Dschematron.failon.error=true -Dschematron.failon.warning=true -Dschematron.failon.info=false -Dclean.temp=no 
+
 
 notifications:
   slack:
