@@ -20,7 +20,6 @@ before_script:
 
 script:
   - dita-ot-$DITAOT/bin/dita -i samples/sample.ditamap -f pdf2 -v -Dschematron.topic.validation.files=../rules/topic-validation.sch,../rules/topic-terminology.sch -Dschematron.fail=false -Dschematron.failon.fatal=true -Dschematron.failon.error=true -Dschematron.failon.warning=true -Dschematron.failon.info=false -Dschematron.svrl.dir=out -Dclean.temp=no 
-  - less dita-ot-$DITAOT/out/*.svrl
 
 notifications:
   slack:
