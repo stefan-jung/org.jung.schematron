@@ -66,6 +66,7 @@
       <val>true</val>
       <val default="true">false</val>
     </param>
+    <param name="schematron.svrl.dir" desc="Directory where the SVRL file should be stored." type="dir"/>
   </transtype>
   
 </plugin>
