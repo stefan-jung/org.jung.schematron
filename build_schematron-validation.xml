@@ -173,8 +173,6 @@
         <record name="${schematron.logfile}" action="start" append="true"/>
         <!--
             If the property svrlDirectory is set, task generates SVRL files in the specified directory.
-            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
-            So the SVRL feature is (ATM) more or less useless.
         -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
@@ -209,8 +207,6 @@
         <record name="${schematron.logfile}" action="start" append="true"/>
         <!--
             If the property svrlDirectory is set, task generates SVRL files in the specified directory.
-            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
-            So the SVRL feature is (ATM) more or less useless.
         -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
