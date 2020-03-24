@@ -173,8 +173,6 @@
         <record name="${schematron.logfile}" action="start" append="true"/>
         <!--
             If the property svrlDirectory is set, task generates SVRL files in the specified directory.
-            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
-            So the SVRL feature is (ATM) more or less useless.
         -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
@@ -209,8 +207,6 @@
         <record name="${schematron.logfile}" action="start" append="true"/>
         <!--
             If the property svrlDirectory is set, task generates SVRL files in the specified directory.
-            Unfortunately the SVRL files are named as the processed DITA files (scrambled filename).
-            So the SVRL feature is (ATM) more or less useless.
         -->
         <schematron if:set="schematron.svrl.dir"
             schematronFile="${schematron.files}"
@@ -238,6 +234,48 @@
             <errorRole if:true="schematron.failon.info" role="info" />
         </schematron>
         <record name="${schematron.logfile}" action="stop"/>
+
+        <!-- Clean up whitespace and linebreaks in SVRL files -->
+        <replaceregexp match="\s*&amp;#xa;\s*" replace="" flags="g">
+            <fileset dir="${output.dir}" includes="**/*.svrl"/>
+        </replaceregexp>
+        
+        <!-- Clean up log file -->
+        <replaceregexp match="\[schematron\]\s*" replace="" file="${schematron.logfile}" flags="g"/>
+        <copy file="${schematron.logfile}" tofile="${schematron.logfile}.temp">
+            <filterchain>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="Validating XML file"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="Found no hashCode implementation"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="Binding pure Schematron"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="Successfully parsed Schematron file"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="The expectations were not fullfilled"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="JAXP"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="Schematron error for XML file"/>
+                </linecontainsregexp>
+                <linecontainsregexp negate="true">
+                    <regexp pattern="was validated against Schematron"/>
+                </linecontainsregexp>
+                <deletecharacters chars="\t"/>
+                <trim/>
+                <ignoreblank/>
+            </filterchain>
+        </copy>
+        <delete file="${schematron.logfile}"/>
+        <move file="${schematron.logfile}.temp" tofile="${schematron.logfile}"/>
+
     </target>
     
 </project>
