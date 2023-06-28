@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
-            xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
-            xmlns:doctales="http://doctales.github.io"
-            queryBinding="xslt2">
+    xmlns:sqf="http://www.schematron-quickfix.com/validator/process"
+    queryBinding="xslt2">
    <sch:title>Terminology</sch:title>
    <sch:pattern>
       <sch:rule context="*/text()">

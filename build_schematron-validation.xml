@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-  Copyright 2017, 2018 DOCTALES. All rights reserved.
+  Copyright 2023 Stefan Jung. All rights reserved.
   See the accompanying LICENSE file for applicable license.
 -->
 <project basedir="." name="build_dita2schematron" xmlns:if="ant:if" xmlns:unless="ant:unless">

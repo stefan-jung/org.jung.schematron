@@ -1,12 +1,9 @@
-org.doctales.schematron
-===========================
+org.jung.schematron
+===================
 
-![DOCTALES Logo](https://doctales.github.io/images/doctales-logo-without-subtitle.svg)
-
-[![Build Status](https://travis-ci.org/doctales/org.doctales.schematron.svg?branch=master)](https://travis-ci.org/doctales/org.doctales.schematron)
 [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
-**org.doctales.schematron** is a plugin for the **[DITA Open Toolkit (DITA-OT)](http://www.dita-ot.org)**. It uses the `depend.preprocess.post` extension point to validate DITA maps and topics after the *preprocessing phase*. The plugin uses [ph-schematron](https://github.com/phax/ph-schematron) for validation.
+**org.jung.schematron** is a plugin for the **[DITA Open Toolkit (DITA-OT)](http://www.dita-ot.org)**. It uses the `depend.preprocess.post` extension point to validate DITA maps and topics after the *preprocessing phase*. The plugin uses [ph-schematron](https://github.com/phax/ph-schematron) for validation.
 
 **ph-schematron** is a Java library that validates XML documents via ISO Schematron. It is licensed under Apache 2.0 license.
 
@@ -32,7 +29,7 @@ org.doctales.schematron
 You can simply install the plugin to the **DITA-OT** via `dita --install`.
 
 ```
-dita --install https://github.com/doctales/org.doctales.schematron/archive/master.zip
+dita --install https://github.com/stefan-jung/org.jung.schematron/archive/master.zip
 ```
 
 

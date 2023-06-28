@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="dita-ot/plugin.rnc" type="application/relax-ng-compact-syntax"?>
 <!-- 
-  Copyright 2017, 2018. DOCTALES. All rights reserved.
+  Copyright 2023 Stefan Jung. All rights reserved.
   See the accompanying LICENSE file for applicable license.
 -->
-<plugin id="org.doctales.schematron">
+<plugin id="org.jung.schematron">
   
   <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
