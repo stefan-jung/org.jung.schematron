@@ -6,6 +6,8 @@
 -->
 <plugin id="org.jung.schematron">
   
+  <require plugin="org.jung.graal"/>
+  
   <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/javax.activation-api-1.2.0.jar"/>
