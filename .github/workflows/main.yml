@@ -28,7 +28,7 @@ jobs:
           chmod +x dita-ot-4.1.2/bin/dita
           chmod +x dita-ot-4.1.2/bin/ant
           zip -qq -r org.jung.schematron.zip . -x ./.git/**\*
-          dita-ot-4.1.2/bin/dita install org.jung.graal
+          dita-ot-4.1.2/bin/dita install https://github.com/stefan-jung/org.jung.graal/archive/refs/tags/20.2.0.zip
           dita-ot-4.1.2/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
@@ -56,7 +56,7 @@ jobs:
           chmod +x dita-ot-4.0.2/bin/dita
           chmod +x dita-ot-4.0.2/bin/ant
           zip -qq -r org.jung.schematron.zip . -x ./.git/**\*
-          dita-ot-4.0.2/bin/dita install org.jung.graal
+          dita-ot-4.0.2/bin/dita install https://github.com/stefan-jung/org.jung.graal/archive/refs/tags/20.2.0.zip
           dita-ot-4.0.2/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
@@ -85,7 +85,7 @@ jobs:
           chmod +x dita-ot-3.7.4/bin/ant
           zip -qq -r org.jung.terminology.zip . -x ./.git/**\*
           zip -qq -r org.jung.schematron.zip . -x ./.git/**\*
-          dita-ot-3.7.4/bin/dita install org.jung.graal
+          dita-ot-3.7.4/bin/dita install https://github.com/stefan-jung/org.jung.graal/archive/refs/tags/20.2.0.zip
           dita-ot-3.7.4/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
