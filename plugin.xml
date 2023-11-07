@@ -9,22 +9,55 @@
   <require plugin="org.jung.graal"/>
   
   <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
-  <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-2.21.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/javax.activation-api-1.2.0.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime -->
+  <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-4.2.0.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
+  <feature extension="dita.conductor.lib.import" file="lib/jakarta.activation-api-2.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-api-2.3.1.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-2.3.0.1.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-2.3.2.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-bc-9.3.9.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -->
+  <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-4.0.4.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+  <feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-4.0.4.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-bc-9.5.5.jar"/>
+  
+  <!-- FIXME: Could not find this one -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-cli-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-collection-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-commons-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-dao-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-datetime-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-graph-9.3.9.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-cli-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-collection -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-collection-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-commons -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-commons-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-dao -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-dao-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-datetime -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-datetime-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-graph -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-graph-11.1.2.jar"/>
+  
+  <!-- FIXME: Could not find this one -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-isorelax-1.1.1.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-json-9.3.9.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-jaxb -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-json -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-json-11.1.2.jar"/>
+  
   <feature extension="dita.conductor.lib.import" file="lib/ph-less-commons-9.3.9.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-matrix-9.3.9.jar"/>
   <feature extension="dita.conductor.lib.import" file="lib/ph-scopes-9.3.9.jar"/>
