@@ -8,85 +8,86 @@
   
   <require plugin="org.jung.graal"/>
   
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.6.5-jar-with-dependencies.jar"/>
   <!-- REMINDER: To update ph-schematron, you also need to update build_taskdef_ph-schematron.xml -->
   
-  <!-- https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime -->
+  <!--<!-\- https://mvnrepository.com/artifact/com.sun.istack/istack-commons-runtime -\->
   <feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-4.2.0.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
+  <!-\- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -\->
   <feature extension="dita.conductor.lib.import" file="lib/jakarta.activation-api-2.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+  <!-\- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -\->
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-api-2.3.1.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -->
+  <!-\- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -\->
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-4.0.4.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+  <!-\- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -\->
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-4.0.4.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
+  <!-\- https://mvnrepository.com/artifact/com.helger/ph-bc -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
   
-  <!-- FIXME: Could not find this one -->
-  <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>-->
+  <!-\- FIXME: Could not find this one -\->
+  <!-\-<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>-\->
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-cli-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-collection -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-collection -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-collection-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-commons -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-commons -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-commons-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-dao -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-dao -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-dao-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-datetime -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-datetime -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-datetime-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-graph -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-graph -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-graph-11.1.2.jar"/>
   
-  <!-- FIXME: Could not find this one -->
+  <!-\- FIXME: Could not find this one -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-isorelax-1.1.1.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-jaxb -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-jaxb -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-jaxb-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-json -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-json -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-json-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-less-commons -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-less-commons -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-less-commons-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-matrix -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-matrix -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-matrix-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-scopes -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-scopes -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-scopes-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-security -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-security -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-security-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-settings -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-settings -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-settings-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-tree -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-tree -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-tree-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-wsclient -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-wsclient -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-wsclient-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-xml -->
+  <!-\- https://mvnrepository.com/artifact/com.helger.commons/ph-xml -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-xml-11.1.2.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger/ph-schematron -->
+  <!-\- https://mvnrepository.com/artifact/com.helger/ph-schematron -\->
   <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.6.5.jar"/>
   
-  <!-- https://mvnrepository.com/artifact/com.helger.schematron/ph-schematron-ant-task -->
-  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-7.1.2.jar"/>
+  <!-\- https://mvnrepository.com/artifact/com.helger.schematron/ph-schematron-ant-task -\->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-7.1.2.jar"/>-->
   
   <feature extension="dita.xsl.messages" file="resources/messages.xml"/>
   <feature extension="dita.conductor.target.relative" file="build.xml"/>
