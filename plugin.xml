@@ -26,7 +26,7 @@
   <feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-4.0.4.jar"/>
   
   <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
-  <feature extension="dita.conductor.lib.import" file="lib/ph-bc-9.5.5.jar"/>
+  <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
   
   <!-- FIXME: Could not find this one -->
   <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>-->
