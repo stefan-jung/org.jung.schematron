@@ -29,7 +29,7 @@
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-9.5.5.jar"/>
   
   <!-- FIXME: Could not find this one -->
-  <feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>
+  <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>-->
   
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-cli-11.1.2.jar"/>
@@ -58,16 +58,35 @@
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-json -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-json-11.1.2.jar"/>
   
-  <feature extension="dita.conductor.lib.import" file="lib/ph-less-commons-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-matrix-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-scopes-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-security-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-settings-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-tree-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-wsclient-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-xml-9.3.9.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.4.0.jar"/>
-  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.4.0.jar"/>
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-less-commons -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-less-commons-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-matrix -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-matrix-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-scopes -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-scopes-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-security -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-security-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-settings -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-settings-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-tree -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-tree-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-wsclient -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-wsclient-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-xml -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-xml-11.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger/ph-schematron -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-5.6.5.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.schematron/ph-schematron-ant-task -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-7.1.2.jar"/>
   
   <feature extension="dita.xsl.messages" file="resources/messages.xml"/>
   <feature extension="dita.conductor.target.relative" file="build.xml"/>
