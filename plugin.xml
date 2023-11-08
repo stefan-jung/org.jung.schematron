@@ -31,6 +31,24 @@
   <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
   
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-api -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-api-7.1.2.jar"/>
+  
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-pure -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-pure-7.1.2.jar"/>
+  
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-schxslt -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-schxslt-7.1.2.jar"/>
+  
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-testfiles -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-testfiles-7.1.2.jar"/>
+  
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-validator -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-validator-7.1.2.jar"/>
+  
+  <!-- https://repo1.maven.org/maven2/com/helger/schematron/ph-schematron-xslt -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-xslt-7.1.2.jar"/>
+  
   <!-- This is no longer needed -->
   <!-- https://mvnrepository.com/artifact/com.helger/ph-charset -->
   <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.5.5.jar"/>-->
