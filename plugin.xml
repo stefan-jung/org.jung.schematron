@@ -8,6 +8,62 @@
   
   <require plugin="org.jung.graal"/>
   
+<!--  This is what you need, according to mvn dependency:tree:
+  
+  DONE [INFO] -\-\- dependency:3.6.0:tree (default-cli) @ ph-schematron-ant-task -\-\-
+  DONE [INFO] com.helger.schematron:ph-schematron-ant-task:jar:7.1.3-SNAPSHOT
+  DONE [INFO] +- com.helger.commons:ph-commons:jar:11.1.2:compile
+  DONE [INFO] |  +- com.google.code.findbugs:jsr305:jar:3.0.2:compile
+  SHIPPED WITH OT [INFO] |  \- org.slf4j:slf4j-api:jar:2.0.7:compile
+  DONE [INFO] +- com.helger.schematron:ph-schematron-xslt:jar:7.1.3-SNAPSHOT:compile
+  DONE [INFO] |  \- com.helger.schematron:ph-schematron-api:jar:7.1.3-SNAPSHOT:compile
+  DONE [INFO] |     +- com.helger.commons:ph-xml:jar:11.1.2:compile
+  DONE [INFO] |     +- com.helger.commons:ph-jaxb:jar:11.1.2:compile
+  DONE [INFO] |     +- com.helger.xsd:ph-xsds-xml:jar:3.0.0:compile
+  SHIPPED WITH OT [INFO] |     \- net.sf.saxon:Saxon-HE:jar:11.6:compile
+  SHIPPED WITH OT [INFO] |        +- org.xmlresolver:xmlresolver:jar:5.2.1:compile
+  DONE [INFO] |        |  +- org.apache.httpcomponents.client5:httpclient5:jar:5.1.3:runtime
+  DONE [INFO] |        |  |  +- org.apache.httpcomponents.core5:httpcore5-h2:jar:5.1.3:runtime
+  DONE [INFO] |        |  |  \- commons-codec:commons-codec:jar:1.15:runtime
+  DONE [INFO] |        |  \- org.apache.httpcomponents.core5:httpcore5:jar:5.1.3:runtime
+  SHIPPED WITH OT [INFO] |        \- org.xmlresolver:xmlresolver:jar:data:5.2.1:compile
+  DONE [INFO] +- com.helger.schematron:ph-schematron-schxslt:jar:7.1.3-SNAPSHOT:compile
+  DONE [INFO] |  \- name.dmaus.schxslt:schxslt:jar:1.9.5:compile
+  DONE [INFO] +- com.helger.schematron:ph-schematron-pure:jar:7.1.3-SNAPSHOT:compile
+  SHIPPED WITH OT [INFO] +- org.apache.ant:ant:jar:1.10.14:provided
+  NOT SURE [INFO] |  \- org.apache.ant:ant-launcher:jar:1.10.14:provided
+  SHIPPED WITH OT [INFO] +- org.apache.ant:ant-apache-resolver:jar:1.10.14:provided
+  SHIPPED WITH OT [INFO] |  \- xml-resolver:xml-resolver:jar:1.2:provided
+  SHIPPED WITH OT [INFO] +- org.slf4j:slf4j-simple:jar:2.0.7:compile
+  DONE [INFO] +- com.sun.xml.bind:jaxb-impl:jar:4.0.3:compile
+  DONE [INFO] |  \- com.sun.xml.bind:jaxb-core:jar:4.0.3:compile
+  DONE [INFO] |     +- jakarta.xml.bind:jakarta.xml.bind-api:jar:4.0.0:compile
+  DONE [INFO] |     |  \- jakarta.activation:jakarta.activation-api:jar:2.1.2:compile
+  DONE [INFO] |     \- org.eclipse.angus:angus-activation:jar:2.0.1:runtime
+  
+-->  
+  
+  <!-- https://mvnrepository.com/artifact/com.google.code.findbugs/jsr305 -->
+  <feature extension="dita.conductor.lib.import" file="lib/jsr305-3.0.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/com.helger.xsd/ph-xsds-xml/3.0.0 -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-xsds-xml-3.0.0.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 -->
+  <feature extension="dita.conductor.lib.import" file="lib/httpclient5-5.1.3.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5-h2 -->
+  <feature extension="dita.conductor.lib.import" file="lib/httpcore5-h2-5.1.3.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+  <feature extension="dita.conductor.lib.import" file="lib/commons-codec-1.15.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents.core5/httpcore5 -->
+  <feature extension="dita.conductor.lib.import" file="lib/httpcore5-5.1.3.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/name.dmaus.schxslt/schxslt -->
+  <feature extension="dita.conductor.lib.import" file="lib/schxslt-1.9.5.jar"/>
+  
   <!-- This does not work properly in the DITA-OT environment -->
   <!-- https://repo1.maven.org/maven2/com/helger/ph-schematron-ant-task/ -->
   <!-- <feature extension="dita.conductor.lib.import" file="lib/ph-schematron-ant-task-5.6.5-jar-with-dependencies.jar"/> -->
@@ -17,16 +73,22 @@
   <!--<feature extension="dita.conductor.lib.import" file="lib/istack-commons-runtime-4.2.0.jar"/>-->
   
   <!-- https://mvnrepository.com/artifact/jakarta.activation/jakarta.activation-api -->
-  <!--<feature extension="dita.conductor.lib.import" file="lib/jakarta.activation-api-2.1.2.jar"/>-->
+  <feature extension="dita.conductor.lib.import" file="lib/jakarta.activation-api-2.1.2.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
+  <feature extension="dita.conductor.lib.import" file="lib/jakarta.xml.bind-api-4.0.0.jar"/>
+  
+  <!-- https://mvnrepository.com/artifact/org.eclipse.angus/angus-activation -->
+  <feature extension="dita.conductor.lib.import" file="lib/angus-activation-2.0.1.jar"/>
   
   <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
   <!--<feature extension="dita.conductor.lib.import" file="lib/jaxb-api-2.3.1.jar"/>-->
   
   <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -->
-  <!--<feature extension="dita.conductor.lib.import" file="lib/jaxb-core-4.0.4.jar"/>-->
+  <feature extension="dita.conductor.lib.import" file="lib/jaxb-core-4.0.3.jar"/>
   
   <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
-  <!--<feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-4.0.4.jar"/>-->
+  <feature extension="dita.conductor.lib.import" file="lib/jaxb-impl-4.0.3.jar"/>
   
   <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
