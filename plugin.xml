@@ -31,8 +31,8 @@
   <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
   
-  <!-- FIXME: Could not find this one -->
-  <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.3.9.jar"/>-->
+  <!-- https://mvnrepository.com/artifact/com.helger/ph-charset -->
+  <feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.5.5.jar"/>
   
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-cli-11.1.2.jar"/>
@@ -52,7 +52,7 @@
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-graph -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-graph-11.1.2.jar"/>
   
-  <!-- FIXME: Could not find this one -->
+  <!-- https://mvnrepository.com/artifact/com.helger/ph-isorelax -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-isorelax-1.1.1.jar"/>
   
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-jaxb -->
