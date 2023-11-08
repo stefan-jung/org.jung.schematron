@@ -32,7 +32,7 @@ jobs:
           dita-ot-4.1.2/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
-          dita-ot-4.1.2/bin/dita --project=samples/samples.xml --output=4.1.2 --processing-mode=strict --verbose
+          dita-ot-4.1.2/bin/dita --project=samples/samples.xml --output=4.1.2 --processing-mode=strict --verbose -Dpolyglot.engine.WarnInterpreterOnly=false
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -60,7 +60,7 @@ jobs:
           dita-ot-4.0.2/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
-          dita-ot-4.0.2/bin/dita --project=samples/samples.xml --output=4.0.2 --processing-mode=strict --verbose
+          dita-ot-4.0.2/bin/dita --project=samples/samples.xml --output=4.0.2 --processing-mode=strict --verbose -Dpolyglot.engine.WarnInterpreterOnly=false
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
@@ -89,7 +89,7 @@ jobs:
           dita-ot-3.7.4/bin/dita install org.jung.schematron.zip --force
       - name: Build test files
         run: |
-          dita-ot-3.7.4/bin/dita --project=samples/samples.xml --output=3.7.4 --processing-mode=strict --verbose
+          dita-ot-3.7.4/bin/dita --project=samples/samples.xml --output=3.7.4 --processing-mode=strict --verbose -Dpolyglot.engine.WarnInterpreterOnly=false
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
