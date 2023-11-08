@@ -31,8 +31,9 @@
   <!-- https://mvnrepository.com/artifact/com.helger/ph-bc -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-bc-11.1.2.jar"/>
   
+  <!-- This is no longer needed -->
   <!-- https://mvnrepository.com/artifact/com.helger/ph-charset -->
-  <feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.5.5.jar"/>
+  <!--<feature extension="dita.conductor.lib.import" file="lib/ph-charset-9.5.5.jar"/>-->
   
   <!-- https://mvnrepository.com/artifact/com.helger.commons/ph-cli -->
   <feature extension="dita.conductor.lib.import" file="lib/ph-cli-11.1.2.jar"/>
